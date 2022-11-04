@@ -8,28 +8,31 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,400" rel="stylesheet">
     <link rel="stylesheet" href="css/custom.css">
-    <title>CONTROL DE GASTOS</title>
+    <title>PROYECTO FINAL</title>
     <script defer src="./app.js" type="module"></script>
     <script defer src="modal.js"></script>
 </head>
 
 <body>
-
     <div class="container">
         <header>
             <h1 class="text-center">Control de Presupuesto</h1>
-            <div class="btn">
-            <button id="boton-lista">
-                <img src="./css/img/boton-agregar.png" alt=""width=10%><i class="Listaimg"></i></button>
-            <button  id="boton-filtro">
-                <img src="./css/img/boton-agregar.png" alt=""width=10%><i class="Listaimg"></i></button>
+            <div class="imagen-iconos">
+            <ul class="iconos">
+                <li><button id="boton-lista">
+                    <img src="./css/img/boton-agregar.png" alt="">
+                <i class="Listaimg"></i></button></li>
+                <li><button  id="boton-filtro">
+                    <img src="./css/img/filter-icon-30.png" alt=""><i class="Listaimg"></i></button>
+                </li>
+                <li><button type="submit" class="boton-resetear" id="boton-resetear"><img src="./css/img/reset.jpg" alt=""></button></li>
+            </ul>
             </div>
         </header>
         <section class="contenido-principal">
             <div class="contenido secundario">
-
                 <div id="presupuesto" class="presupuesto">
-                      <div class="alert alert-primary">
+                     <div class="alert alert-primary">
                         <p>Presupuesto: $ <span id="total"></span> </p>
                       </div>
                       <div class="restante alert alert-success">
@@ -50,9 +53,8 @@
 
                 </div>
         </section>
-        <div class="filtro">
-            <p>FILTRAR GASTOS</p>
-        </div>
+        
+    <!----------------ModalGastos------------------>
     <div class="modal-contenedor">
         <div class="modal-listaGastos">
             <h3>NUEVO GASTO</h3>
@@ -60,39 +62,52 @@
             <h2 class="text-center">Añade tus gastos aqui</h2>
             <form id="agregar-gasto" action="#">
                 <div class="form-group">
-                    <label for="gasto">Gasto:</label>
+                    <label for="gasto">NOMBRE DEL GASTO:</label>
                     <input type="text" class="form-control" id="gasto" placeholder="Nombre Gasto">
                 </div>
                 <div class="form-group">
-                    <label for="cantidad">Cantidad:</label>
+                    <label for="cantidad">CANTIDAD:</label>
                     <input type="text" class="form-control" id="cantidad" placeholder="Cantidad en $">
                 </div>
                 <div class="form-group">
-                    <label id="categoria">Categoria:</label>
+                    <label id="categoria">CATEGORIA:</label> <br>
                     <select id="campo" value="categoria">
-                        <option value="">----- Selecione -----</option>
-                        <option value="Ahorro">Ahorro</option>
-                        <option value="Comida">Comida</option>
-                        <option value="Salud">Salud</option>
-                        <option value="Suscripciones">Suscripciones</option>
-                        <option value="Recibos">Recibos</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Ocio">Ocio</option>
-                        <option value="Otro">Otro</option>
+                        <option value="">----------- SELECCIONE UNA CATEGORIA -----------</option>
+                        <option value="Ahorro">AHORRO</option>
+                        <option value="Comida">COMIDA</option>
+                        <option value="Salud">SERVICIOS</option>
+                        <option value="Suscripciones">SUSCRIPCIONES</option>
+                        <option value="Recibos">TRANSPORTE</option>
+                        <option value="Casa">CASA</option>
+                        <option value="Ocio">DIVERSION</option>
+                        <option value="Ocio">IMPREVISTOS</option>
+                        <option value="Otro">OTRO</option>
                       </select>
                 </div>
-           <button type="submit" class="btn btn-primary">Agregar</button>
+           <button type="submit" class="btn btn-primary" id="btn-agregar">Agregar</button>
            
          </div>
 
         </form>
-    </div>
+        </div>
             <div id="listaGastos-contenedor"> </div>
         </div>
-    </div>
-
     
 
+    <!----------------Modalfiltro------------------>
+        <div class="modal-filtro"> 
+            <div class="modal-listaCategoria"> 
+               <h3>Filtro por Categoria</h3>
+               <div class="contenido primario">
+                  <button id="filtroCerrar"><i class="fas fa-times-circle"></i></button> 
+                   <div id="listaCategoria-contenedor">
+                     <p>hola</p>
+                    </div>
+                </div> 
+            </div> 
+        </div>   
+    
+</div>
     
 </body>
 

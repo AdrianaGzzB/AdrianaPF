@@ -99,7 +99,6 @@ class UI {
             ${nombre}
             <span class="badge badge-primary badge-phill">$ ${cantidad}</span>
             ${campo}
-
             `
                 //borrar gasto boton
             const btnBorrar = document.createElement('button')
@@ -193,7 +192,7 @@ function agregarGasto(e) {
         presupuesto.nuevoGasto(gasto)
 
         //insertar HTML
-        ui.imprimirAlerta('Correcto', 'correcto')
+       
 
         //imprimir el gasto
         const { gastos } = presupuesto
@@ -220,4 +219,3 @@ function eliminarGasto(id) {
     ui.comprobarPresupuesto(presupuesto);
 
 }
-
