@@ -45,25 +45,23 @@ img {
     margin-bottom: 30px;
 }
 h1{
-    font-family: sans-serif;
+    
     font-weight: 800;
     text-decoration: double;
     color:rgb(242, 246, 247);
+    font-size: 4rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
-h2 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 100;
-    color:#004e92;
-    font-size: 22px;
-    margin-bottom:30px;
-}
+
 h3{
-    font-family: sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 800;
     color:rgb(242, 246, 247);
     text-align: center;
-
+    text-decoration-line: underline;
+    text-decoration: double;
 }
+
 label{
     font-family: sans-serif;
     color: rgb(242, 246, 247);
@@ -97,9 +95,12 @@ select{
 }
 .modal-filtro {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 200px;
+    width: 10%;
+    margin-top: -380px;
+    margin-left:500px ;
     height: 100vh;
+    transition: all .5s;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -121,7 +122,6 @@ select{
     margin-top: -100%;
     transition: all .5s;
     border-radius: 10px;
-
 }
 
 .modal-listaCategoria {
@@ -132,7 +132,6 @@ select{
     margin-top: -100%;
     transition: all .5s;
     border-radius: 10px;
-
 }
 
 .modal-active .modal-listaGastos {
@@ -160,7 +159,7 @@ select{
     border: none;
     background-color:rgb(242,149,220);  
 }
-/*Boton para abrir la ventana modal*/
+/*Boton para abrir la ventana modal del navegador*/
 #boton-lista {
     border: none;
     align-items: flex-start ;

@@ -21,9 +21,11 @@
             <ul class="iconos">
                 <li><button id="boton-lista">
                     <img src="./css/img/boton-agregar.png" alt="">
-                <i class="Listaimg"></i></button></li>
+                <i class="Listaimg"></i></button>
+                </li>
                 <li><button  id="boton-filtro">
-                    <img src="./css/img/filter-icon-30.png" alt=""><i class="Listaimg"></i></button>
+                    <img src="./css/img/filter-icon-30.png" alt="">
+                <i class="Listaimg"></i></button>
                 </li>
                 <li><button type="submit" class="boton-resetear" id="boton-resetear"><img src="./css/img/reset.jpg" alt=""></button></li>
             </ul>
@@ -50,8 +52,7 @@
                         <ul class="list-group"></ul>
                      </div>
                 </div>
-
-                </div>
+            </div>
         </section>
         
     <!----------------ModalGastos------------------>
@@ -59,7 +60,6 @@
         <div class="modal-listaGastos">
             <h3>NUEVO GASTO</h3>
         <div class="contenido primario">
-            <h2 class="text-center">Añade tus gastos aqui</h2>
             <form id="agregar-gasto" action="#">
                 <div class="form-group">
                     <label for="gasto">NOMBRE DEL GASTO:</label>
@@ -85,30 +85,24 @@
                       </select>
                 </div>
            <button type="submit" class="btn btn-primary" id="btn-agregar">Agregar</button>
-           
-         </div>
-
-        </form>
+           </div>
+          </form>
         </div>
             <div id="listaGastos-contenedor"> </div>
         </div>
-    
-
     <!----------------Modalfiltro------------------>
-
         <div class="modal-filtro"> 
             <div class="modal-listaCategoria"> 
-               <h3>Filtro por Categoria</h3>
-               <p>hola</p>
-               <div class="contenido primario">
+               <h3>CATEGORIAS CON GASTOS</h3>
+               <form class="contenido primario" id="agregar-filtro" action="#" >
+                <ul>
+                    <li>hola</li>
+                </ul>
                   <button id="filtroCerrar"><i class="fas fa-times-circle"></i></button> 
-                </div> 
+                </form> 
             </div>
             <div id="listaCategoria-contenedor"></div> 
         </div>   
-    
 </div>
-    
 </body>
-
 </html>

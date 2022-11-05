@@ -1,6 +1,9 @@
 //----------------------variables---------------------------------------------
 const formulario = document.getElementById('agregar-gasto')
 const gastoListado = document.querySelector('#gastos ul')
+const filtrarCategoria = document.getElementById('agregar-filtro')
+const filtterArray=[]
+let cantidadCategoria=Number
 
 //--------------------------eventos-----------------------
  eventListeners()
@@ -8,37 +11,42 @@ const gastoListado = document.querySelector('#gastos ul')
  function eventListeners() {
      document.addEventListener('DOMContentLoaded', preguntarPresupuesto)
      formulario.addEventListener('submit', agregarGasto)
+     filtrarCategoria.addEventListener('click', filtroCategorias)
      gastoListado.addEventListener('click', eliminarGasto)
+
+
  }
 
  //---------------------Clases----------------------------------------
 class Presupuesto {
     constructor(presupuesto) {
-        this.presupuesto = Number(presupuesto)
-        this.restante = Number(presupuesto)
-        this.gastos = []
-        this.categorias=[]
-        this.filtterArray=[]
-        this.pocentaje=Number(0)
-        this.gastado=Number(0)
-        this.cantidadCategoria=Number(0)
+        this.presupuesto = Number(presupuesto)//es el presupuesto definido por el usuario
+        this.restante = Number(presupuesto)// es la cantidad que queda despues de un gasto, al inicio vale lo mismo que presupuesto
+        this.gastos = []//arreglo de todos los gastos generados
+        this.categorias=[]//
+        this.filtterArray=[] //
+        this.pocentaje=Number(0)//pocentaje de lo gastado
+        this.gastado=Number(0)//total de la cantidad gastada
+        this.cantidadCategoria=Number(0) //cantidad de gastos por cada categoria
     }
 
     filtrarCategoria(myJSON, categoria){
       filtterArray=myJSON.filter(elem=>elem.campo===categoria)// aqui me traigo del campo los objetos 
       cantidadCategoria=filtterArray.reduce((acc, elem)=>acc+elem.cantidad, 0)//del los objetos que obtuvo se hace una sumatoria
     console.log('arregloFiltrado', this.filtterArray)
+    console.log('cantidadcategoria',this.cantidadCategoria)
     } 
     nuevoGasto(gasto) {
         this.gastos = [...this.gastos, gasto]
         this.categoriasDistintas(this.gastos)
         this.calcularRestante()
+        console.log('arreglo de gastos',gastos)
     }
 
     categoriasDistintas(myJSON){
         this.categorias = [...new Set(myJSON.map(elem =>elem.campo))] //se trae solo los campos que existe
-        console.log('categorias',this.categorias) 
-        console.log('JSON', myJSON)   
+        console.log('categorias con gasto',this.categorias) 
+        console.log('todos los gastos guardados en el JSON', myJSON)   
     }
 
     eliminarGasto(id) {
@@ -89,29 +97,29 @@ class UI {
             //iterar 
         gastos.forEach(gasto => {
             const { nombre, cantidad, id, campo} = gasto
-
+           
             //Crear un lista
             const nuevoGasto = document.createElement('li');
             nuevoGasto.className = 'list-group-item d-flex justify-content-between align-items-center'
             nuevoGasto.dataset.id = id;
-            nuevoGasto.innerHTML = `
-            ${nombre}
-            <span class="badge badge-primary badge-phill">$ ${cantidad}</span>
-            ${campo}
-            `
+            nuevoGasto.innerHTML = ` ${nombre}    $${  cantidad}   ${  campo} `
             //borrar gasto boton
             const btnBorrar = document.createElement('button')
             btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto')
             btnBorrar.textContent = 'Borrar'
-            btnBorrar.onclick = () => {
-                eliminarGasto(id)
-            }
+            btnBorrar.onclick = () => eliminarGasto(id)
+            
+
+
+            const btnBorrar1 = document.createElement('button')
+            btnBorrar1.classList.add('btn', 'btn-danger', 'editar-gasto')
+            btnBorrar1.textContent = 'Borrar'
+            btnBorrar1.onclick = () => eliminarGasto(id)
+
             const btnEditar = document.createElement('button')
             btnEditar.classList.add('btn', 'btn-agregar', 'editar-gasto')
             btnEditar.textContent = 'Editar'
-            btnEditar.onclick = () => {
-                editarGasto(id)
-            }
+            btnEditar.onclick = (gasto) => editarGasto(id)
             nuevoGasto.appendChild(btnBorrar);
             //Insertar en HTML
             gastoListado.appendChild(nuevoGasto)
@@ -153,6 +161,7 @@ class UI {
         while (gastoListado.firstChild) {
             gastoListado.removeChild(gastoListado.firstChild)
         }
+       
     }
 }
 
@@ -205,6 +214,18 @@ function agregarGasto(e) {
 }
 function editarGasto(id){
 
+}
+
+function filtroCategorias(){
+    ui.categoriasDistintas(myJSON)
+}
+
+
+function resetApp() {
+    while (gastoListado.firstChild) {
+        gastoListado.removeChild(gastoListado.firstChild)
+    }
+    ui.insertarPresupuesto(cantidad)
 }
 //cuando eliminas un solo gasto
 function eliminarGasto(id) {
