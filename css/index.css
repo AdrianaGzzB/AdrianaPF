@@ -8,22 +8,22 @@ header {
 img {
     width: 100%;
 }
-.imagen-iconos{
-   width: 70%;
-  }
-.iconos li{
-    width:15%;
+
+.iconos img{
+    width: 25%;
+}
+.iconos :hover{
+    color: white;
+}
+.iconos{
+    width:70%;
     text-decoration: none;
     display: flex;
     display: inline-block;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
 }
-.iconos li img{
-    width: 50%;
-}
-.iconos li :hover{
-    color: rgb(150, 217, 229);
-}
-
 .contenido {
     padding:20px;
 }
@@ -44,6 +44,10 @@ img {
 #gastos {
     margin-bottom: 30px;
 }
+#categorias{
+    margin-bottom:30px ;
+}
+
 h1{
     
     font-weight: 800;
@@ -51,6 +55,11 @@ h1{
     color:rgb(242, 246, 247);
     font-size: 4rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+h2{
+    color: cadetblue;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 h3{
@@ -65,7 +74,7 @@ h3{
 label{
     font-family: sans-serif;
     color: rgb(242, 246, 247);
-    font-weight: 100%;
+    font-weight: 100;
     font-size: 22px;
 }
 option{
@@ -84,7 +93,8 @@ select{
     position: fixed;
     top: 0;
     width: 100%;
-    margin-left: 300px;
+    margin: auto;
+    margin-left: 100px;
     margin-top: 100px;
     display: flex;
     justify-content: center;
@@ -104,7 +114,20 @@ select{
     display: flex;
     justify-content:center;
     align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.modal-inicio {
+    position: fixed;
+    top: 200px;
+    width: 10%;
+    margin-top: -200px;
+    margin-left:500px ;
+    height: 100vh;
     transition: all .5s;
+    display: flex;
+    justify-content:center;
+    align-items: center;
     opacity: 0;
     visibility: hidden;
 }
@@ -125,6 +148,15 @@ select{
 }
 
 .modal-listaCategoria {
+    position: relative;
+    background-color: rgb(49, 95, 116);
+    min-width: 500px;
+    padding: 20px;
+    margin-top: -100%;
+    transition: all .5s;
+    border-radius: 10px;
+}
+.modal-inicio-contenedor {
     position: relative;
     background-color: rgb(49, 95, 116);
     min-width: 500px;
@@ -159,26 +191,43 @@ select{
     border: none;
     background-color:rgb(242,149,220);  
 }
-/*Boton para abrir la ventana modal del navegador*/
+
 #boton-lista {
     border: none;
-    align-items: flex-start ;
-    justify-content: flex-start;
     background-color: rgb(88, 202, 222);
     border-radius: 10px;
+    padding:auto;
+    margin: auto;
+    width: 20%;
+    height: auto;
    
 }
 #boton-filtro{
     border: none;
-    align-items: flex-start;
-    justify-content: flex-start;
     background-color: rgb(88, 202, 222);
     border-radius: 10px;
+    padding:auto;
+    margin: auto;
+    width: 20%;
+    height: auto;
 }
 
-#boton-resetear{
-    background-color:white;
+#boton-reset{
+    background-color:red;
     border-radius: 10px;
+    font-weight: 800;
+    padding: 15px;
+    
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:15px ;
+}
+#boton-inicio{
+    background-color:rgb(88, 202, 222);
+    border-radius: 10px;
+    font-weight: 800;
+    padding: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
 }
 #btn-agregar{
     padding: 10px;
@@ -186,8 +235,6 @@ select{
     width: 100%;
     background-color: rgb(88, 202, 222);
 }
-<<<<<<< Updated upstream
-=======
 #btn-editar{
     padding: 10px;
     border-radius: 10px;
@@ -208,5 +255,3 @@ select{
     font-weight: 600;
 
 }
-
->>>>>>> Stashed changes

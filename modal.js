@@ -12,12 +12,17 @@ botonAbrir.addEventListener('click', ()=>{
 //-------modal filtro categoria--------------
 const filtroModal = document.getElementsByClassName('modal-filtro')[0];
 const botonAbrirFiltro = document.getElementById('boton-filtro')
-const botonfiltroCerrar = document.getElementById('listaCategoriaCerrar')
+const btnfiltroCerrar = document.getElementById('filtroCerrar')
 botonAbrirFiltro.addEventListener('click', ()=>{
     filtroModal.classList.toggle('modal-active')
 });
-/*
-botonfiltroCerrar.addEventListener('click', ()=>{
+/*btnfiltroCerrar.addEventListener('click', ()=>{
     filtroModal.classList.toggle('modal-active')
 });*/
-
+//-------modal inicio--------------
+const inicioModal = document.getElementsByClassName('modal-inicio')[0];
+const botonAbrirInicio = document.getElementById('boton-inicio')
+//const btnfiltroCerrar = document.getElementById('filtroCerrar')
+botonAbrirInicio.addEventListener('click', ()=>{
+    inicioModal.classList.toggle('modal-active')
+});
