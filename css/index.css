@@ -186,3 +186,27 @@ select{
     width: 100%;
     background-color: rgb(88, 202, 222);
 }
+<<<<<<< Updated upstream
+=======
+#btn-editar{
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgb(49, 95, 116);
+    color: rgb(242, 246, 247);
+}
+#listaCategorias{
+    background-color: brown;
+}
+.botonAgregarPresupuesto{
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgb(88, 202, 222);
+    color: rgb(49, 95, 116);
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+>>>>>>> Stashed changes

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,400" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <title>PROYECTO FINAL</title>
-    <script defer src="./app.js" type="module"></script>
+    <script defer src="./app1.js" type="module"></script>
     <script defer src="modal.js"></script>
 </head>
 
@@ -17,6 +17,7 @@
     <div class="container">
         <header>
             <h1 class="text-center">Control de Presupuesto</h1>
+<<<<<<< Updated upstream
             <div class="imagen-iconos">
             <ul class="iconos">
                 <li><button id="boton-lista">
@@ -29,31 +30,142 @@
                 </li>
                 <li><button type="submit" class="boton-resetear" id="boton-resetear"><img src="./css/img/reset.jpg" alt=""></button></li>
             </ul>
+=======
+            <div class="iconos">
+                <button type='submit' class="boton-lista" id="boton-lista">
+                <img src="./css/img/boton-agregar.png" alt=""></button>
+                <button  type='submit' class="boton-filtro" id="boton-filtro">
+                <img src="./css/img/filter-icon-30.png" alt=""></button>
+                <button type="submit" class="boton-reset" id="boton-reset">RESET
+                </button>
+                <button type='submit' class="boton-inicio" id="boton-inicio" >INICIAR
+                </button>
+>>>>>>> Stashed changes
             </div>
         </header>
         <section class="contenido-principal">
+<<<<<<< Updated upstream
             <div class="contenido secundario">
+=======
+           <!-- <div class="contenido secundario">-->
+            
+            <div class="row" id="Inicio" style="display:block ;">
+>>>>>>> Stashed changes
                 <div id="presupuesto" class="presupuesto">
                      <div class="alert alert-primary">
                         <p>Presupuesto: $ <span id="total"></span> </p>
                       </div>
+                </div>
+            </div>
                       <div class="restante alert alert-success">
                         <p>Disponible: $ <span id="restante"></span></p>
                       </div>
                       <div class="alert alert-primary">
                         <p>Gastado: $ <span id="gastado"></span></p>
                       </div>
+<<<<<<< Updated upstream
                       <div class="alert alert-primary">
                         <p>Porcentaje Gastado</p>
                       </div>
                     
                      <div id="gastos">
+=======
+                      
+                      <div class="progress">
+                            <div class="progress-bar bg-secondary " id="porcentaje" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                      </div>  
+                      <div class="alert alert-success" id="divTotalFiltrado" style="display:none;">
+                        <p><span id="totalFiltrado">total filtrado</span></p>
+                    </div>
+                     <p> <span ></span> % gastado </p> 
+                </div>
+            </div>
+                    <p>USTED LLEVA EL <span id="porcentaje"></span> % GASTADO DE SU PRESUPUESTO </p> 
+                      
+                      <div id="gastos">
+>>>>>>> Stashed changes
                         <h2>GASTOS</h2>
                         <ul class="list-group"></ul>
                      </div>
                 </div>
+<<<<<<< Updated upstream
             </div>
         </section>
+=======
+            <!--</div>-->
+        </section>
+        <div id="Resumen" style="display:none ;" class="row"></div>
+    </div>
+<!----Vantanas Modal-->
+<!----------------ModalGastos------------------>
+<div class="container">
+<div class="modal-contenedor">
+    <div class="modal-listaGastos">
+        <h3>NUEVO GASTO</h3>
+    <div class="contenido primario">
+        <form id="agregar-gasto" action="#">
+           <!-- <div class="form-group">-->
+                <label for="gasto">NOMBRE DEL GASTO:</label>
+                <input type="text" class="form-control" id="gasto" placeholder="Nombre Gasto">
+           <!-- </div>-->
+           <!-- <div class="form-group">-->
+                <label for="cantidad">CANTIDAD:</label>
+                <input type="text" class="form-control" id="cantidad" placeholder="Cantidad en $">
+           <!-- </div>-->
+            <div class="form-group">
+                <label id="categoria">CATEGORIA:</label> <br>
+                <select id="select" value="categoria">
+                    <option value="">----------- SELECCIONE UNA CATEGORIA -----------</option>
+                    <option value="AHORRO">AHORRO</option>
+                    <option value="COMIDA">COMIDA</option>
+                    <option value="SERVICIOS">SERVICIOS</option>
+                    <option value="SUSCRIPCIONES">SUSCRIPCIONES</option>
+                    <option value="TRANSPORTE">TRANSPORTE</option>
+                    <option value="CASA">CASA</option>
+                    <option value="DIVERSION">DIVERSION</option>
+                    <option value="IMPREVISTOS">IMPREVISTOS</option>
+                    <option value="OTRO">OTRO</option>
+                  </select>
+            </div>
+       <button type="submit" class="btn btn-primary" id="btn-agregar">Agregar</button>
+       </div>
+      </form>
+   </div>
+        <div id="listaGastos-contenedor"> </div>
+    </div>
+<!----------------Modalfiltro------------------>
+    <div class="modal-filtro"> 
+        <div class="modal-listaCategoria"> 
+              <h3>CATEGORIAS CON GASTOS</h3>
+            <select name="" id="agregar-categoria">
+               <div id="categorias">
+                <ul class="list-group1" id="ulCategorias"></ul>
+               </div>
+               <div id="listaCategorias-contenedor" class="listacategorias">
+               </div> 
+             
+               <button id="filtroCerrar"><i class="fas fa-times-circle"></i></button> 
+            </select>
+        </div> 
+    </div> 
+<!----------------ModalInicio------------------>
+<div class="modal-inicio" id="modal-inicio"> 
+    <div class="modal-inicio-contenedor">  
+       <!-- <form id='agregar-presupuesto' action="#" > -->
+        <label for="presupuesto">¿CUAL ES SU PRESUPUESTO?</label>
+        <input 
+        type="text" 
+        class="form-control"
+        id="idPresupuesto" 
+        placeholder="MONTO EN $">
+        <br>
+        <button   
+        class="botonAgregarPresupuesto" 
+        id="botonAgregarPresupuesto">Agregar Presupuesto</button>
+    <!-- </form> -->
+>>>>>>> Stashed changes
         
     <!----------------ModalGastos------------------>
     <div class="modal-contenedor">
