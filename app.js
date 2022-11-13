@@ -2,10 +2,9 @@
 const formulario = document.getElementById('agregar-gasto')
 const gastoListado = document.querySelector('#gastos ul')
 const filtrarCategoria = document.getElementById("boton-filtro")
-const listaCategorias = document.querySelectorAll('#categorias ul')
+const listaCategorias = document.querySelector('ulCategorias ul')
 const resetearApp=document.getElementById('boton-reset')
 const InicioApp = document.getElementById('botonAgregarPresupuesto')
-
 
 //--------------------------eventos-----------------------
  eventListeners()
@@ -14,10 +13,8 @@ const InicioApp = document.getElementById('botonAgregarPresupuesto')
     InicioApp.addEventListener('click', preguntarPresupuesto)
     formulario.addEventListener('submit', agregarGasto)
     gastoListado.addEventListener('click', eliminarGasto)
-    //listaCategorias.addEventListener('click', cerrarCategoria)
     filtrarCategoria.addEventListener('click', agregarCategorias)//metodo
     resetearApp.addEventListener('click',resetApp)
-    
 }
 
  //---------------------Clases----------------------------------------
@@ -113,9 +110,7 @@ class UI {
             //iterar 
         gastos.forEach(gasto => {
             const { nombre, cantidad, id, select} = gasto
-           
-            //Crear un lista
-            const nuevoGasto = document.createElement('li');
+            const nuevoGasto = document.createElement('li');//Crear un lista
             nuevoGasto.className = 'list-group-item d-flex justify-content-between align-items-center'
             nuevoGasto.dataset.id = id;
             nuevoGasto.innerHTML = ` ${nombre}   $${  cantidad}  ${  select} `
@@ -237,7 +232,7 @@ function agregarGasto(e) {
         const { porcentaje } = presupuesto
         ui.actualizarPorcentaje(porcentaje)
         const { totalCategoria } = presupuesto
-        ui.actualizarPorcentaje(totalCategoria)
+        ui.actualizarTotalCategoria(totalCategoria)
         ui.comprobarPresupuesto(presupuesto)
 
         formulario.reset()//limpiar el formulario
@@ -250,7 +245,7 @@ function editarGasto(){
 function agregarCategorias(){
     const categorias=presupuesto.categorias
     const categoriaFiltrada=presupuesto.categoriaFiltrada
-    console.log('categoriasF',categorias)
+    //console.log('categoriasF',categorias)
     document.getElementById("agregar-categoria").options.length=0
     const select=document.querySelector('#agregar-categoria')
     categorias.forEach((elem) => {
@@ -262,7 +257,7 @@ function agregarCategorias(){
     select.onclick= ()=> {
         
     const categoria=select.value
-    console.log('categoria',categoria)
+    console.log('categoria select',categoria)
     presupuesto.filtrarCategoria(categoria)
     
     //iterar 
@@ -273,10 +268,11 @@ function agregarCategorias(){
         console.log('gastoFiltrado',categoria)
         //Crear un lista
         const nuevaCategoria = document.createElement('li');
-        nuevaCategoria.className = 'list-group-categorias-item d-flex justify-content-between align-items-center'
+        document.querySelector('span#totalCategoria').textContent= totalCategoria
+        nuevaCategoria.className = 'list-categorias-item d-flex justify-content-between align-items-center'
         //console.log('nuevaCategoria',nuevaCategoria)
         nuevaCategoria.innerHTML = ` ${nombre}    $${  cantidad}   ${  select} `
-        //console.log('nuevaCategoria',nuevaCategoria)
+        console.log('nuevaCategoria',nuevaCategoria)
         listaCategorias.appendChild(nuevaCategoria)  
     });
     
