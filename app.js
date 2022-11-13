@@ -14,7 +14,7 @@ const InicioApp = document.getElementById('botonAgregarPresupuesto')
     InicioApp.addEventListener('click', preguntarPresupuesto)
     formulario.addEventListener('submit', agregarGasto)
     gastoListado.addEventListener('click', eliminarGasto)
-     //listaCategorias.addEventListener('click', cerrarCategoria)
+    //listaCategorias.addEventListener('click', cerrarCategoria)
     filtrarCategoria.addEventListener('click', agregarCategorias)//metodo
     resetearApp.addEventListener('click',resetApp)
     
@@ -49,7 +49,7 @@ class Presupuesto {
     this.categoriaFiltrada=this.gastos.filter(elem=>elem.select===categoria)// aqui me traigo del campo los objetos 
     this.totalCategoria=this.categoriaFiltrada.reduce((acc, elem)=>acc+elem.cantidad, 0)//del los objetos que obtuvo se hace una sumatoria
     console.log('categoriaFiltrada', this.categoriaFiltrada)
-    console.log('totalcategoria',this.totalCategoria)
+    console.log('totalCategoria',this.totalCategoria)
     } 
     nuevoGasto(gasto) {
         this.gastos = [...this.gastos, gasto]
@@ -60,12 +60,13 @@ class Presupuesto {
     categoriasDistintas(){
         this.categorias = [...new Set(this.gastos.map(elem =>elem.select))] //se trae solo los campos que existe
         console.log('categorias',this.categorias) 
-        console.log('gastos', this.gastos)   
+       
     }
 
     eliminarGasto(id) {
         this.gastos = this.gastos.filter(gasto => gasto.id !== id); //tal vez se necesite cambiar a string
         this.calcularRestante()
+        this.categoriasDistintas()
     }
 
 //reduce
@@ -79,12 +80,14 @@ class Presupuesto {
 class UI {
     insertarPresupuesto(cantidad) {
         //Extrayendo los valores 
-        const { presupuesto, restante, gastado, porcentaje } = cantidad;
+        const { presupuesto, restante, gastado, porcentaje,totalCategoria } = cantidad;
         //agregando al HTML
         document.querySelector('#total').textContent = presupuesto
         document.querySelector('#restante').textContent = restante
         document.querySelector('#gastado').textContent = gastado
         document.querySelector('#porcentaje').textContent = porcentaje
+        document.querySelector('#totalCategoria').textContent = totalCategoria
+
     }
     imprimirAlerta(mensaje, tipo) {
             const divMensaje = document.createElement('div')
@@ -105,7 +108,7 @@ class UI {
             }, 3000)
         }
         //insertar los gastos a la lista 
-        agregarGastoLista(gastos) {
+    agregarGastoLista(gastos) {
         this.limpiarHTML()
             //iterar 
         gastos.forEach(gasto => {
@@ -115,7 +118,7 @@ class UI {
             const nuevoGasto = document.createElement('li');
             nuevoGasto.className = 'list-group-item d-flex justify-content-between align-items-center'
             nuevoGasto.dataset.id = id;
-            nuevoGasto.innerHTML = ` ${nombre}    $${  cantidad}   ${  select} `
+            nuevoGasto.innerHTML = ` ${nombre}   $${  cantidad}  ${  select} `
             //boton editar gasto
             const btnEditar = document.createElement('button')
             btnEditar.classList.add('btn', 'btn-primary', 'editar-gasto')
@@ -134,19 +137,19 @@ class UI {
         });
     }
      //-----------------------------------------------------------------------------
-    //agregarCategoriaLista(){
-
-    //agregarCategorias(categorias)
-     
-    //}
+    
     actualizarRestante(restante) {
         document.querySelector('span#restante').textContent = restante
+        agregarCategorias()
     }
     actualizarGastado(gastado){
         document.querySelector('span#gastado').textContent = gastado
     }
     actualizarPorcentaje(porcentaje){
         document.querySelector('span#porcentaje').textContent= porcentaje
+    }
+    actualizarTotalCategoria(totalCategoria){
+        document.querySelector('span#totalCategoria').textContent= totalCategoria
     }
 
     comprobarPresupuesto(presupuestoObj) {
@@ -222,7 +225,6 @@ function agregarGasto(e) {
     } else if (cantidad > maximo) {
         ui.imprimirAlerta('Saldo Insuficiente', 'error')
     } else {
-
         const gasto = { nombre, cantidad, select, id: Date.now() }
         //añadir nuevo gasto
         presupuesto.nuevoGasto(gasto)
@@ -234,7 +236,10 @@ function agregarGasto(e) {
         ui.actualizarGastado(gastado)//actualizar el porcentaje
         const { porcentaje } = presupuesto
         ui.actualizarPorcentaje(porcentaje)
+        const { totalCategoria } = presupuesto
+        ui.actualizarPorcentaje(totalCategoria)
         ui.comprobarPresupuesto(presupuesto)
+
         formulario.reset()//limpiar el formulario
     }
 }
@@ -255,6 +260,7 @@ function agregarCategorias(){
     select.add(new Option(elem,elem),null)
     })
     select.onclick= ()=> {
+        
     const categoria=select.value
     console.log('categoria',categoria)
     presupuesto.filtrarCategoria(categoria)
@@ -267,11 +273,13 @@ function agregarCategorias(){
         console.log('gastoFiltrado',categoria)
         //Crear un lista
         const nuevaCategoria = document.createElement('li');
+        nuevaCategoria.className = 'list-group-categorias-item d-flex justify-content-between align-items-center'
         //console.log('nuevaCategoria',nuevaCategoria)
         nuevaCategoria.innerHTML = ` ${nombre}    $${  cantidad}   ${  select} `
         //console.log('nuevaCategoria',nuevaCategoria)
         listaCategorias.appendChild(nuevaCategoria)  
     });
+    
   }
 }
 

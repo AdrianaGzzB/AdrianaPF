@@ -45,16 +45,15 @@
                       <div class="porcentaje alert alert-success">
                         <p>USTED LLEVA EL <span id="porcentaje"></span> % GASTADO DE SU PRESUPUESTO </p>
                       </div>
-                      
-                      <div id="gastos">
-                        <h2>GASTOS</h2>
-                        <ul class="list-group"></ul>
-                     </div>
-                </div>
-            <!--</div>-->
+                    </div>
+                <!--</div>-->
         </section>
+        <div id="gastos">
+            <h2>GASTOS</h2>
+            <ul class="list-group"></ul>
+         </div>
     </div>
-<!----Vantanas Modal-->
+<!----Vantanas Modal--> 
 <!----------------ModalGastos------------------>
 <div class="container">
 <div class="modal-contenedor">
@@ -95,21 +94,24 @@
     <div class="modal-filtro"> 
         <div class="modal-listaCategoria"> 
               <h3>CATEGORIAS CON GASTOS</h3>
-            <select name="" id="agregar-categoria">
-               <div id="categorias">
-                <ul class="list-group" id="ulCategorias"></ul>
+            <select name="" id="agregar-categoria"></select>
+               <div id="categorias"> 
+                <ul class="list-categorias" id="ulCategorias"></ul>
                </div>
-               <div id="listaCategorias-contenedor" class="listacategorias">
-               </div> 
-             
-               <button id="filtroCerrar"><i class="fas fa-times-circle"></i></button> 
-            </select>
+               <!-- <div id="listaCategorias-contenedor" class="listacategorias">  
+                <ul class="lista-GastoCategoria" id="ulListaGastoCategoria"></ul>
+               </div> -->
+            <div class="alert alert-primary mt-2">
+                <p>TOTAL DE GASTOS EN ESTA CATEGORIA: $ <span id="totalCategoria"></span> </p>
+            </div>
+            <button id="filtroCerrar">Cerrar<i class="fas fa-times-circle"></i></button> 
         </div> 
+        
     </div> 
 <!----------------ModalInicio------------------>
 <div class="modal-inicio" id="modal-inicio"> 
     <div class="modal-inicio-contenedor">  
-       <form id='agregar-presupuesto' action="#" >
+       <!-- <form id='agregar-presupuesto' action="#" > -->
         <label for="presupuesto">¿CUAL ES SU PRESUPUESTO?</label>
         <input  
         class="form-control"
@@ -119,11 +121,8 @@
         <button type="submit" 
         class="botonAgregarPresupuesto" 
         id="botonAgregarPresupuesto">Agregar Presupuesto</button>
-    </form>
-        
+    <!-- </form> -->
     </div>
-   
 </div> 
-
 </body>
 </html>
