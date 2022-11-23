@@ -90,7 +90,7 @@ select{
 }
 
 .modal-contenedor {
-    position: fixed;
+    /*position: fixed;
     top: 0;
     width: 100%;
     margin: auto;
@@ -101,16 +101,12 @@ select{
     align-items: center;
     transition: all .5s;
     opacity: 0;
-    visibility: hidden;
-}
-.modal-filtro {
+    visibility: hidden;*/
     position: fixed;
     top: 200px;
-    width: 50%;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
-    /*margin-top: -380px;
-    margin-left:500px ;*/
     height: 100vh;
     transition: all .5s;
     display: flex;
@@ -119,10 +115,21 @@ select{
     opacity: 0;
     visibility: hidden;
 }
-/*@media (min-width: 768px)
 .modal-filtro {
-    max-width: 720px;
-}*/
+    position: fixed;
+    top: 200px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100vh;
+    transition: all .5s;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
 .modal-inicio {
     position: fixed;
     top: 200px;
@@ -188,14 +195,20 @@ select{
     border: none;
     background-color:rgb(242,149,220);
 }
-.modal-listaCategoria #listaCategoriaCerrar{
+.modal-listaCategoria #filtroCerrar{
     position: absolute;
     top: 15px;
     right: 15px;
     font-size: 20px;
-    color: black;
+    font-weight: 900;
+    border-radius: 360px;
+    color:black;
     border: none;
-    background-color:rgb(242,149,220);  
+    background-color:rgb(242, 246, 247);  
+}
+.modal-listaCategoria #filtroCerrar:hover{
+    background-color: rgb(49, 95, 116);
+    color: rgb(242, 246, 247);
 }
 
 #boton-lista {
@@ -248,9 +261,7 @@ select{
     background-color: rgb(49, 95, 116);
     color: rgb(242, 246, 247);
 }
-/*#listaCategorias{
-    background-color: brown;
-}*/
+
 .botonAgregarPresupuesto{
     padding: 5px;
     border-radius: 10px;

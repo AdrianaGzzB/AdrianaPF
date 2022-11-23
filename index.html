@@ -49,7 +49,7 @@
                 <!--</div>-->
         </section>
         <div id="gastos">
-            <h2>GASTOS</h2>
+            <h2>GASTO NUMERO <span id="totalGastos"></span> </h2>
             <ul class="list-group"></ul>
          </div>
     </div>
@@ -94,26 +94,22 @@
     <div class="modal-filtro"> 
         <div class="modal-listaCategoria"> 
               <h3>CATEGORIAS CON GASTOS</h3>
-            <select name="" id="agregar-categoria"></select>
+            <select name="" id="agregar-categoria" class="select"></select>
                <div id="categorias"> 
-                <h2>Gastos</h2>
+                <h2>Gastos de esta Categoria</h2>
                 <ul class="list-categorias"></ul>
                </div>
-               <!-- <div id="listaCategorias-contenedor" class="listacategorias">  
-                <ul class="lista-GastoCategoria" id="ulListaGastoCategoria"></ul>
-               </div> -->
-            <div class="alert alert-primary mt-2">
+            <label for="totalCategoria">TOTAL DE ESTA CATEGORIA: $ <span id="totalCategoria"></span></label>
+            <!-- <div class="alert alert-primary mt-2"> 
                 <p>TOTAL DE GASTOS EN ESTA CATEGORIA: $ <span id="totalCategoria"></span> </p>
-            </div>
-            <button id="filtroCerrar">Cerrar<i class="fas fa-times-circle"></i></button> 
+            </div>-->
+            <button id="filtroCerrar">X<i class="fas fa-times-circle"></i></button> 
         </div> 
-        
     </div> 
 <!----------------ModalInicio------------------>
 <div class="modal-inicio" id="modal-inicio"> 
     <div class="modal-inicio-contenedor">  
-       <!-- <form id='agregar-presupuesto' action="#" > -->
-        <label for="presupuesto">¿CUAL ES SU PRESUPUESTO?</label>
+       <label for="presupuesto">¿CUAL ES SU PRESUPUESTO?</label>
         <input  
         class="form-control"
         id="idPresupuesto" 
@@ -122,7 +118,6 @@
         <button type="submit" 
         class="botonAgregarPresupuesto" 
         id="botonAgregarPresupuesto">Agregar Presupuesto</button>
-    <!-- </form> -->
     </div>
 </div> 
 </body>
