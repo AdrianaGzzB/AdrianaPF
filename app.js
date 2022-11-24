@@ -5,25 +5,24 @@ const filtrarCategoria = document.getElementById("boton-filtro")
 const listaCategorias = document.querySelector('#categorias ul')
 const resetearApp = document.getElementById('boton-reset')
 const InicioApp = document.getElementById('botonAgregarPresupuesto')
-let gastos=[]
+let gastos=[];
+
 
 //--------------------------eventos-----------------------
 eventListeners()
-
 function eventListeners() {
     InicioApp.addEventListener('click', preguntarPresupuesto)
     formulario.addEventListener('submit', agregarGasto)
     gastoListado.addEventListener('click', eliminarGasto)
     filtrarCategoria.addEventListener('click', agregarCategorias)//metodo
     resetearApp.addEventListener('click', resetApp)
-   /* document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('gastos')) {
-            this.gastos = JSON.parse(localStorage.getItem('gastos'))
-            ui.agregarGastoLista();
+            gastos = JSON.parse(localStorage.getItem('gastos'))
+            ui.insertarPresupuesto();
         } 
-    })   */
+    })       
 }
-
 //---------------------Clases----------------------------------------
 class Presupuesto {
     constructor(presupuesto) {
@@ -87,7 +86,7 @@ class UI {
         document.querySelector('#gastado').textContent = gastado
         document.querySelector('#porcentaje').textContent = porcentaje
         document.querySelector('#totalCategoria').textContent = totalCategoria
-
+        
     }
     imprimirAlerta(mensaje, tipo) {
         const divMensaje = document.createElement('div')
@@ -128,11 +127,11 @@ class UI {
             btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto')
             btnBorrar.textContent = 'Borrar'
             btnBorrar.onclick = () => eliminarGasto(id)
-           // document.querySelector('span#totalGasto').textContent = presupuesto.gastos.length
             //Insertar en HTML
            //nuevoGasto.appendChild(btnEditar)
             nuevoGasto.appendChild(btnBorrar);
             gastoListado.appendChild(nuevoGasto)
+            localStorage.setItem('gastos',JSON.stringify(gastos))
 
         });
         //localStorage.setItem('gastos',JSON.stringify(gastos))
@@ -141,13 +140,16 @@ class UI {
 
     actualizarRestante(restante) {
         document.querySelector('span#restante').textContent = restante
+        localStorage.setItem('restante',JSON.stringify(restante))
         agregarCategorias()
     }
     actualizarGastado(gastado) {
         document.querySelector('span#gastado').textContent = gastado
+        localStorage.setItem('gastado',JSON.stringify(gastado))
     }
     actualizarPorcentaje(porcentaje) {
         document.querySelector('span#porcentaje').textContent = porcentaje
+        localStorage.setItem('porcentaje',JSON.stringify(porcentaje))
     }
     actualizarTotalCategoria(totalCategoria) {
         document.querySelector('span#totalCategoria').textContent = totalCategoria
@@ -204,7 +206,6 @@ function preguntarPresupuesto() {
     if (presupuestoUsuario === '' || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0) {
         window.location.reload();
     }
-    //presupuesto = presupuestoUsuario
     presupuesto = new Presupuesto(presupuestoUsuario) 
     ui.insertarPresupuesto(presupuesto)
 }
@@ -274,12 +275,15 @@ function agregarCategorias() {
             nuevaCategoria.className = 'list-categorias-item d-flex justify-content-between align-items-center color-white'
             nuevaCategoria.innerHTML = ` ${nombre}    $${cantidad} `
             listaCategorias.appendChild(nuevaCategoria)
+            localStorage.setItem('gastos',JSON.stringify(gastos))
         });
     }
 }
 
 
 function resetApp() {
+  const resultado=confirm('¿Desea reiniciar la aplicacion?')
+  if(resultado){
     presupuesto.resetApp()
     ui.limpiarHTML()
     document.querySelector('#total').textContent = ""
@@ -287,6 +291,8 @@ function resetApp() {
     document.querySelector('#gastado').textContent = ""
     document.querySelector('#porcentaje').textContent = ""
     console.log('reset', presupuesto)
+  }
+    
 }
 //cuando eliminas un solo gasto
 function eliminarGasto(id) {
@@ -298,8 +304,3 @@ function eliminarGasto(id) {
     ui.actualizarGastado(gastado);
     ui.comprobarPresupuesto(presupuesto);
 }
-/*function getLocalStorage(){
-    gastos=JSON.parse(localStorage.getItem('gastos'))
-    ui.agregarGastoLista();
-
-}*/
